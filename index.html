@@ -36,6 +36,22 @@
         }
         .output-box {
             background-color: #f8f8f8;  /* 출력 항목은 밝은 회색 */
+            display: flex;
+            flex-direction: column;
+        }
+        .output-box div {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #e8e8e8; /* 박스 배경색 */
+        }
+        .output-box div label {
+            width: 50%;
+            text-align: right;
+            padding-right: 10px;
         }
         .result {
             margin-top: 20px;
@@ -56,13 +72,13 @@
             background-color: #0056b3;
         }
         /* 출력항목 박스를 스타일링 */
-        .output-box div {
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
+        .output-box div span {
+            width: 50%;
+            text-align: left;
+            background-color: #f0f8ff;
+            padding: 5px;
             border-radius: 4px;
-            background-color: #e8e8e8; /* 박스 배경색 */
-            text-align: center;
+            box-sizing: border-box;
         }
         /* 순수익과 마진율 빨간색 스타일 */
         .net-profit, .margin-rate {
@@ -91,13 +107,34 @@
         
         <!-- 출력 항목들 -->
         <div class="output-box">
-            <div><strong>수입 원가:</strong> <span id="importCost">0 원</span></div>
-            <div><strong>부가세:</strong> <span id="vat">0 원</span></div>
-            <div><strong>순수익:</strong> <span id="netProfit" class="net-profit">0 원</span></div>
-            <div><strong>마진율:</strong> <span id="marginRate" class="margin-rate">0%</span></div>
-            <div><strong>엔드로아스:</strong> <span id="endros">0%</span></div>
-            <div><strong>판매 수수료:</strong> <span id="saleFee">0 원</span></div>
-            <div><strong>그로스 수수료:</strong> <span id="grossFee">2,500 원</span></div>
+            <div>
+                <label for="importCost">수입 원가:</label>
+                <span id="importCost">0 원</span>
+            </div>
+            <div>
+                <label for="vat">부가세:</label>
+                <span id="vat">0 원</span>
+            </div>
+            <div>
+                <label for="netProfit">순수익:</label>
+                <span id="netProfit" class="net-profit">0 원</span>
+            </div>
+            <div>
+                <label for="marginRate">마진율:</label>
+                <span id="marginRate" class="margin-rate">0%</span>
+            </div>
+            <div>
+                <label for="endros">엔드로아스:</label>
+                <span id="endros">0%</span>
+            </div>
+            <div>
+                <label for="saleFee">판매 수수료:</label>
+                <span id="saleFee">0 원</span>
+            </div>
+            <div>
+                <label for="grossFee">그로스 수수료:</label>
+                <span id="grossFee">2,500 원</span>
+            </div>
         </div>
 
         <!-- 계산 결과 -->
