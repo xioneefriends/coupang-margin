@@ -78,11 +78,11 @@
         <!-- 출력 항목들 -->
         <div class="output-box">
             <p><strong>수입 원가: </strong><span id="importCost">0 원</span></p>
-            <p><strong>판매 수수료: </strong><span id="saleFee">0 원</span></p>
             <p><strong>부가세: </strong><span id="vat">0 원</span></p>
             <p><strong>순수익: </strong><span id="netProfit">0 원</span></p>
             <p><strong>마진율: </strong><span id="marginRate">0%</span></p>
             <p><strong>엔드로아스: </strong><span id="endros">0%</span></p>
+            <p><strong>판매 수수료: </strong><span id="saleFee">0 원</span></p>
             <p><strong>그로스 수수료: </strong><span id="grossFee">2,500 원</span></p>  <!-- 고정값 2500원 -->
         </div>
 
@@ -123,13 +123,13 @@
             // 엔드로아스 계산 (판매가 / 순수익) -> 퍼센트로 표시
             const endros = (salePrice / netProfit) * 100;
 
-            // 출력 항목에 결과 표시
-            document.getElementById('importCost').textContent = importCost.toLocaleString() + ' 원';
-            document.getElementById('saleFee').textContent = saleFee.toLocaleString() + ' 원';
-            document.getElementById('vat').textContent = vat.toLocaleString() + ' 원';
-            document.getElementById('netProfit').textContent = netProfit.toLocaleString() + ' 원';
-            document.getElementById('marginRate').textContent = marginRate.toFixed(2) + '%';
-            document.getElementById('endros').textContent = endros.toFixed(2) + '%';
+            // 출력 항목에 결과 표시 (소수점 이하 제거)
+            document.getElementById('importCost').textContent = Math.floor(importCost) + ' 원';
+            document.getElementById('vat').textContent = Math.floor(vat) + ' 원';
+            document.getElementById('netProfit').textContent = Math.floor(netProfit) + ' 원';
+            document.getElementById('marginRate').textContent = Math.floor(marginRate) + '%';
+            document.getElementById('endros').textContent = Math.floor(endros) + '%';
+            document.getElementById('saleFee').textContent = Math.floor(saleFee) + ' 원';
         }
     </script>
 </body>
