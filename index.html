@@ -188,6 +188,10 @@
             document.getElementById('endros').textContent = Math.floor(endros) + '%';
             document.getElementById('saleFee').textContent = Math.floor(saleFee).toLocaleString() + ' 원';
             document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
+
+            // 빨간색으로 순수익과 마진율 표시
+            document.getElementById('netProfit').classList.add('net-profit');
+            document.getElementById('marginRate').classList.add('margin-rate');
         }
 
         // 페이지 로드 시 초기값 표시
@@ -197,7 +201,4 @@
             document.getElementById('netProfit').textContent = '0 원';
             document.getElementById('marginRate').textContent = '0%';
             document.getElementById('endros').textContent = '0%';
-            document.getElementById('saleFee').textContent = '0 원';
-            document.getElementById('grossFee').textContent = '2,500 원';
-        }
-    </script
+            document.getElementById('saleFee
