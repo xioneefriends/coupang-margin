@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마진 계산기</title>
+    <title>쿠팡 마진 계산기</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,11 +64,16 @@
             background-color: #e8e8e8; /* 박스 배경색 */
             text-align: center;
         }
+        /* 순수익과 마진율 빨간색 스타일 */
+        .net-profit, .margin-rate {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>마진 계산기</h2>
+        <h2>쿠팡 마진 계산기</h2>
         
         <!-- 입력 항목들 -->
         <div class="input-box">
@@ -88,8 +93,8 @@
         <div class="output-box">
             <div><strong>수입 원가:</strong> <span id="importCost">0 원</span></div>
             <div><strong>부가세:</strong> <span id="vat">0 원</span></div>
-            <div><strong>순수익:</strong> <span id="netProfit">0 원</span></div>
-            <div><strong>마진율:</strong> <span id="marginRate">0%</span></div>
+            <div><strong>순수익:</strong> <span id="netProfit" class="net-profit">0 원</span></div>
+            <div><strong>마진율:</strong> <span id="marginRate" class="margin-rate">0%</span></div>
             <div><strong>엔드로아스:</strong> <span id="endros">0%</span></div>
             <div><strong>판매 수수료:</strong> <span id="saleFee">0 원</span></div>
             <div><strong>그로스 수수료:</strong> <span id="grossFee">2,500 원</span></div>
