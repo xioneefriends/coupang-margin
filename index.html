@@ -87,10 +87,10 @@
             color: red;
             font-weight: normal; /* 굵은 글씨는 아니도록 수정 */
         }
-        /* 순수익과 마진율 라벨 빨간색 */
+        /* 순수익과 마진율 라벨 스타일 (굵지 않게) */
         .net-profit-label, .margin-rate-label {
             color: red;
-            font-weight: bold;
+            font-weight: normal;  /* 라벨은 굵지 않게 */
         }
         /* 출력값 기본 색상: 검정색 */
         .output-box div span {
@@ -203,8 +203,4 @@
             document.getElementById('marginRate').textContent = '0%';
             document.getElementById('endros').textContent = '0%';
             document.getElementById('saleFee').textContent = '0 원';
-            document.getElementById('grossFee').textContent = '2,500 원';
-        }
-    </script>
-</body>
-</html>
+            document.getElementById('grossFee').textContent = '2,500
