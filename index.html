@@ -18,12 +18,13 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        input[type="number"], input[type="text"] {
+        .input-box, .output-box {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
             padding: 10px 20px;
@@ -32,6 +33,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            width: 100%;
         }
         button:hover {
             background-color: #0056b3;
@@ -40,6 +42,7 @@
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
+            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -49,16 +52,17 @@
         
         <!-- 판매가 입력란 -->
         <label for="salePrice">판매 가격 (원):</label>
-        <input type="number" id="salePrice" placeholder="판매 가격 입력">
+        <input type="number" id="salePrice" class="input-box" placeholder="판매 가격 입력">
         
         <!-- 중국 원가 입력란 -->
         <label for="chinaCost">중국 원가 (원):</label>
-        <input type="number" id="chinaCost" placeholder="중국 원가 입력">
+        <input type="number" id="chinaCost" class="input-box" placeholder="중국 원가 입력">
         
-        <!-- 그로스 수수료 입력란 -->
-        <label for="grossFee">그로스 수수료 (%):</label>
-        <input type="number" id="grossFee" placeholder="그로스 수수료 입력">
+        <!-- 그로스 수수료 입력란 (숫자만 입력) -->
+        <label for="grossFee">그로스 수수료:</label>
+        <input type="number" id="grossFee" class="input-box" placeholder="그로스 수수료 입력 (숫자만)">
         
+        <!-- 계산 버튼 -->
         <button onclick="calculateMargin()">마진 계산</button>
         
         <div class="result" id="result"></div>
@@ -87,7 +91,7 @@
             const vat = (salePrice / 11) - (importCost / 11);
 
             // 순수익 계산 (판매가 - 수입원가 - 판매수수료 - 그로스수수료 - 부가세)
-            const netProfit = salePrice - importCost - saleFee - (salePrice * (grossFee / 100)) - vat;
+            const netProfit = salePrice - importCost - saleFee - grossFee - vat;
 
             // 마진율 계산 (순수익 / 판매가)
             const marginRate = (netProfit / salePrice) * 100;
@@ -97,16 +101,16 @@
 
             // 결과 출력
             document.getElementById('result').innerHTML = `
-                판매가: ${salePrice.toLocaleString()} 원<br>
-                중국 원가: ${chinaCost.toLocaleString()} 원<br>
-                그로스 수수료: ${grossFee}%<br>
-                <br>
-                수입 원가: ${importCost.toLocaleString()} 원<br>
-                판매 수수료: ${saleFee.toLocaleString()} 원<br>
-                부가세: ${vat.toLocaleString()} 원<br>
-                순수익: ${netProfit.toLocaleString()} 원<br>
-                마진율: ${marginRate.toFixed(2)}%<br>
-                엔드로아스: ${endros.toFixed(2)}<br>
+                판매가: ${salePrice.toLocaleString()} 원\n
+                중국 원가: ${chinaCost.toLocaleString()} 원\n
+                그로스 수수료: ${grossFee.toLocaleString()} 원\n
+                \n
+                수입 원가: ${importCost.toLocaleString()} 원\n
+                판매 수수료: ${saleFee.toLocaleString()} 원\n
+                부가세: ${vat.toLocaleString()} 원\n
+                순수익: ${netProfit.toLocaleString()} 원\n
+                마진율: ${marginRate.toFixed(2)}%\n
+                엔드로아스: ${endros.toFixed(2)}\n
             `;
         }
     </script>
