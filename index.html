@@ -55,6 +55,15 @@
         button:hover {
             background-color: #0056b3;
         }
+        /* 출력항목 박스를 스타일링 */
+        .output-box div {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #e8e8e8; /* 박스 배경색 */
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -77,4 +86,61 @@
         
         <!-- 출력 항목들 -->
         <div class="output-box">
-            <p><strong>수입 원가: </strong><span id="importCost">0 원</s
+            <div><strong>수입 원가:</strong> <span id="importCost">0 원</span></div>
+            <div><strong>부가세:</strong> <span id="vat">0 원</span></div>
+            <div><strong>순수익:</strong> <span id="netProfit">0 원</span></div>
+            <div><strong>마진율:</strong> <span id="marginRate">0%</span></div>
+            <div><strong>엔드로아스:</strong> <span id="endros">0%</span></div>
+            <div><strong>판매 수수료:</strong> <span id="saleFee">0 원</span></div>
+            <div><strong>그로스 수수료:</strong> <span id="grossFee">2,500 원</span></div>
+        </div>
+
+        <!-- 계산 결과 -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateMargin() {
+            // 입력값 받기
+            const salePrice = parseFloat(document.getElementById('salePrice').value);
+            const chinaCost = parseFloat(document.getElementById('chinaCost').value);
+
+            // 유효성 검사
+            if (isNaN(salePrice) || isNaN(chinaCost)) {
+                document.getElementById('result').innerHTML = "모든 값을 올바르게 입력해주세요!";
+                return;
+            }
+
+            // 고정값 설정 (그로스수수료)
+            const grossFee = 2500;
+
+            // 수입원가 계산 (중국 원가 * 300)
+            const importCost = chinaCost * 300;
+
+            // 판매 수수료 계산 (판매가 * 12%)
+            const saleFee = salePrice * 0.12;
+
+            // 부가세 계산 (판매가 / 11 - 수입원가 / 11)
+            const vat = (salePrice / 11) - (importCost / 11);
+
+            // 순수익 계산 (판매가 - 수입원가 - 판매수수료 - 그로스수수료 - 부가세)
+            const netProfit = salePrice - importCost - saleFee - grossFee - vat;
+
+            // 마진율 계산 (순수익 / 판매가)
+            const marginRate = (netProfit / salePrice) * 100;
+
+            // 엔드로아스 계산 (판매가 / 순수익) -> 퍼센트로 표시
+            const endros = (salePrice / netProfit) * 100;
+
+            // 출력 항목에 결과 표시 (소수점 이하 제거 및 천 단위 구분 기호 추가)
+            document.getElementById('importCost').textContent = Math.floor(importCost).toLocaleString() + ' 원';
+            document.getElementById('vat').textContent = Math.floor(vat).toLocaleString() + ' 원';
+            document.getElementById('netProfit').textContent = Math.floor(netProfit).toLocaleString() + ' 원';
+            document.getElementById('marginRate').textContent = Math.floor(marginRate) + '%';
+            document.getElementById('endros').textContent = Math.floor(endros) + '%';
+            document.getElementById('saleFee').textContent = Math.floor(saleFee).toLocaleString() + ' 원';
+            document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
+        }
+    </script>
+</body>
+</html>
