@@ -96,8 +96,8 @@
             // 마진율 계산 (순수익 / 판매가)
             const marginRate = (netProfit / salePrice) * 100;
 
-            // 엔드로아스 계산 (판매가 / 순수익)
-            const endros = salePrice / netProfit;
+            // 엔드로아스 계산 (판매가 / 순수익) -> 퍼센트로 표시
+            const endros = (salePrice / netProfit) * 100;
 
             // 결과 출력
             document.getElementById('result').innerHTML = `
@@ -110,7 +110,7 @@
                 부가세: ${vat.toLocaleString()} 원\n
                 순수익: ${netProfit.toLocaleString()} 원\n
                 마진율: ${marginRate.toFixed(2)}%\n
-                엔드로아스: ${endros.toFixed(2)}\n
+                엔드로아스: ${endros.toFixed(2)}%\n
             `;
         }
     </script>
