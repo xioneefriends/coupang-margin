@@ -72,11 +72,6 @@
             <input type="number" id="chinaCost" placeholder="중국 원가 입력">
         </div>
 
-        <div class="input-box">
-            <label for="grossFee">그로스 수수료:</label>
-            <input type="number" id="grossFee" placeholder="그로스 수수료 입력 (숫자만)">
-        </div>
-
         <!-- 계산 버튼 -->
         <button onclick="calculateMargin()">마진 계산</button>
         
@@ -88,6 +83,7 @@
             <p><strong>순수익: </strong><span id="netProfit">0 원</span></p>
             <p><strong>마진율: </strong><span id="marginRate">0%</span></p>
             <p><strong>엔드로아스: </strong><span id="endros">0%</span></p>
+            <p><strong>그로스 수수료: </strong><span id="grossFee">2,500 원</span></p>  <!-- 고정값 2500원 -->
         </div>
 
         <!-- 계산 결과 -->
@@ -99,13 +95,15 @@
             // 입력값 받기
             const salePrice = parseFloat(document.getElementById('salePrice').value);
             const chinaCost = parseFloat(document.getElementById('chinaCost').value);
-            const grossFee = parseFloat(document.getElementById('grossFee').value);
 
             // 유효성 검사
-            if (isNaN(salePrice) || isNaN(chinaCost) || isNaN(grossFee)) {
+            if (isNaN(salePrice) || isNaN(chinaCost)) {
                 document.getElementById('result').innerHTML = "모든 값을 올바르게 입력해주세요!";
                 return;
             }
+
+            // 고정값 설정 (그로스수수료)
+            const grossFee = 2500;
 
             // 수입원가 계산 (중국 원가 * 300)
             const importCost = chinaCost * 300;
