@@ -100,8 +100,15 @@
         .input-box input {
             padding: 10px;
             font-size: 16px;
-            width: 50%; /* 입력창 크기를 50%로 줄임 */
             border-radius: 20px; /* 라운드 처리 */
+            width: 50%; /* PC에서 크기 50% */
+        }
+
+        /* 모바일 화면에서 입력박스 크기 50%로 줄이기 */
+        @media (max-width: 768px) {
+            .input-box input {
+                width: 100%; /* 모바일에서는 100%로 크기 확장 */
+            }
         }
     </style>
 </head>
