@@ -56,6 +56,9 @@
             text-align: right;  /* 라벨 오른쪽 정렬 */
             padding-right: 10px;
         }
+        .output-box div input {
+            width: 50%;  /* 입력 박스 폭 설정 */
+        }
         .result {
             margin-top: 20px;
             font-size: 18px;
@@ -209,5 +212,4 @@
             document.getElementById('vat').textContent = Math.floor(vat).toLocaleString() + ' 원';
             document.getElementById('netProfit').textContent = Math.floor(netProfit).toLocaleString() + ' 원';
             document.getElementById('marginRate').textContent = Math.floor(marginRate) + '%';
-            document.getElementById('endros').textContent = Math.floor(endros) + '%';
-            document.getElementById('saleFee').textContent = Math.floor(saleFee
+            document.getElementBy
