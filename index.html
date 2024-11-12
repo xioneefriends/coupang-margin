@@ -8,17 +8,17 @@
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
-            background-color: #000000;
-            color: #fff;
+            background-color: #000000;  /* 배경색을 검정색으로 설정 */
+            color: #fff;  /* 글씨 색을 흰색으로 설정 */
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #333333;
+            background-color: #333333;  /* 컨테이너 배경색을 어두운 회색으로 설정 */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: relative;
+            position: relative;  /* 텍스트 위치를 위한 relative 설정 */
         }
         h2 {
             text-align: center;
@@ -31,30 +31,29 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
-            background-color: #444444;
+            background-color: #444444;  /* 입력 항목과 출력 항목 배경색을 어두운 회색으로 설정 */
         }
         .input-box {
-            background-color: #555555;
-            width: 80%; /* 입력박스 크기를 80%로 줄임 */
+            background-color: #555555;  /* 입력 항목 배경색을 더 어두운 회색으로 설정 */
         }
         .output-box {
-            background-color: #666666;
+            background-color: #666666;  /* 출력 항목 배경색을 밝은 회색으로 설정 */
             display: flex;
             flex-direction: column;
         }
         .output-box div {
             display: flex;
-            justify-content: flex-start;
-            padding: 8px 10px;
-            margin: 5px 0;
+            justify-content: flex-start;  /* 왼쪽 정렬 */
+            padding: 8px 10px; /* 높이를 줄이기 위한 패딩 조정 */
+            margin: 5px 0; /* 항목 간 폭 줄이기 위한 마진 조정 */
             border: 1px solid #ddd;
             border-radius: 4px;
-            background-color: #777777;
-            align-items: center;
+            background-color: #777777; /* 박스 배경색 */
+            align-items: center; /* 세로 가운데 정렬 */
         }
         .output-box div label {
             width: 50%;
-            text-align: right;
+            text-align: right;  /* 라벨 오른쪽 정렬 */
             padding-right: 10px;
         }
         .result {
@@ -64,8 +63,8 @@
             white-space: pre-wrap;
         }
         button {
-            padding: 15px 20px;
-            font-size: 18px;
+            padding: 15px 20px;  /* 버튼 크기 키우기 */
+            font-size: 18px;  /* 글씨 크기 키우기 */
             background-color: #007bff;
             color: white;
             border: none;
@@ -76,21 +75,25 @@
         button:hover {
             background-color: #0056b3;
         }
+        /* 출력항목 박스를 스타일링 */
         .output-box div span {
-            width: 60%;
-            text-align: left;
+            width: 60%;  /* 박스를 길게 만듬 */
+            text-align: left; /* 숫자는 왼쪽 정렬 */
             background-color: #f0f8ff;
             padding: 5px;
             border-radius: 4px;
             box-sizing: border-box;
         }
+        /* 순수익과 마진율 빨간색 스타일 */
         .net-profit, .margin-rate {
             color: red !important;
             font-weight: normal;
         }
+        /* 출력값 기본 색상: 검정색 */
         .output-box div span {
             color: black;
         }
+        /* 우측 상단에 작은 글씨로 표시 */
         .footer-text {
             position: absolute;
             top: 10px;
@@ -98,16 +101,13 @@
             font-size: 12px;
             color: #aaa;
         }
-        .input-box input {
-            padding: 10px; /* 입력박스 안의 패딩을 줄임 */
-            font-size: 16px; /* 글씨 크기를 적당히 줄임 */
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>쿠팡 마진 계산기</h2>
         
+        <!-- 입력 항목들 -->
         <div class="input-box">
             <label for="salePrice">판매 가격 (KRW):</label>
             <input type="number" id="salePrice" placeholder="판매 가격 입력">
@@ -118,9 +118,12 @@
             <input type="number" id="chinaCost" placeholder="중국 원가 입력">
         </div>
 
+        <!-- 계산 버튼 -->
         <button onclick="calculateMargin()">계산</button>
         
+        <!-- 출력 항목들 -->
         <div class="output-box">
+            <!-- 순수익과 마진율을 가장 위로 이동 -->
             <div>
                 <label for="netProfit">순수익:</label>
                 <span id="netProfit" class="net-profit">0 원</span>
@@ -151,42 +154,47 @@
             </div>
         </div>
 
+        <!-- 계산 결과 -->
         <div class="result" id="result"></div>
+
+        <!-- 우측 상단에 텍스트 -->
         <div class="footer-text">coding by 초가을</div>
     </div>
 
     <script>
         function calculateMargin() {
+            // 입력값 받기
             const salePrice = parseFloat(document.getElementById('salePrice').value);
             const chinaCost = parseFloat(document.getElementById('chinaCost').value);
 
-            // 유효성 검사: 값이 없으면 결과를 표시하지 않음
-            if (isNaN(salePrice) || isNaN(chinaCost) || salePrice <= 0 || chinaCost <= 0) {
-                document.getElementById('result').innerHTML = "판매 가격과 중국 원가는 0보다 큰 숫자로 입력해주세요!";
+            // 유효성 검사
+            if (isNaN(salePrice) || isNaN(chinaCost)) {
+                document.getElementById('result').innerHTML = "모든 값을 올바르게 입력해주세요!";
                 return;
             }
 
-            const grossFee = 2500;  // 고정값
+            // 고정값 설정 (그로스수수료)
+            const grossFee = 2500;
 
-            // 수입 원가 계산
+            // 수입원가 계산 (중국 원가 * 300)
             const importCost = chinaCost * 300;
 
-            // 판매 수수료 계산
+            // 판매 수수료 계산 (판매가 * 12%)
             const saleFee = salePrice * 0.12;
 
-            // 부가세 계산
+            // 부가세 계산 (판매가 / 11 - 수입원가 / 11)
             const vat = (salePrice / 11) - (importCost / 11);
 
-            // 순수익 계산
+            // 순수익 계산 (판매가 - 수입원가 - 판매수수료 - 그로스수수료 - 부가세)
             const netProfit = salePrice - importCost - saleFee - grossFee - vat;
 
-            // 마진율 계산
+            // 마진율 계산 (순수익 / 판매가)
             const marginRate = (netProfit / salePrice) * 100;
 
-            // 엔드로아스 계산
+            // 엔드로아스 계산 (판매가 / 순수익) -> 퍼센트로 표시
             const endros = (salePrice / netProfit) * 100;
 
-            // 계산 결과 출력
+            // 출력 항목에 결과 표시 (소수점 이하 제거 및 천 단위 구분 기호 추가)
             document.getElementById('importCost').textContent = Math.floor(importCost).toLocaleString() + ' 원';
             document.getElementById('vat').textContent = Math.floor(vat).toLocaleString() + ' 원';
             document.getElementById('netProfit').textContent = Math.floor(netProfit).toLocaleString() + ' 원';
@@ -195,6 +203,11 @@
             document.getElementById('saleFee').textContent = Math.floor(saleFee).toLocaleString() + ' 원';
             document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
         }
-    </script>
-</body>
-</html>
+
+        // 페이지 로드 시 초기값 표시
+        window.onload = function() {
+            document.getElementById('importCost').textContent = '0 원';
+            document.getElementById('vat').textContent = '0 원';
+            document.getElementById('netProfit').textContent = '0 원';
+            document.getElementById('marginRate').textContent = '0%';
+            document.get
