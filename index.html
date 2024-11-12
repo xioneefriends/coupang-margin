@@ -98,9 +98,9 @@
             color: #aaa;
         }
         .input-box input {
-            padding: 10px; /* 입력창 크기 줄임 */
-            font-size: 16px; /* 글자 크기 줄임 */
-            width: 80%; /* 너비 줄임 */
+            padding: 10px;
+            font-size: 16px;
+            width: 50%; /* 입력창 크기를 50%로 조정 */
         }
     </style>
 </head>
@@ -154,7 +154,7 @@
         <div class="result" id="result"></div>
         <div class="footer-text">
             coding by 초가을 <br>
-            <span id="footer-date"></span>
+            <span id="footer-date"></span> <!-- 날짜를 표시할 부분 -->
         </div>
     </div>
 
@@ -199,7 +199,7 @@
             document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
         }
 
-        // 오늘 날짜를 표시하는 함수
+        // 페이지가 로드된 시간만 표시
         function displayDate() {
             const today = new Date();
             const year = today.getFullYear();
