@@ -168,7 +168,7 @@
             const chinaCost = parseFloat(document.getElementById('chinaCost').value);
 
             // 유효성 검사
-            if (isNaN(salePrice) || isNaN(chinaCost)) {
+            if (isNaN(salePrice) || isNaN(chinaCost) || salePrice <= 0 || chinaCost <= 0) {
                 document.getElementById('result').innerHTML = "모든 값을 올바르게 입력해주세요!";
                 return;
             }
@@ -199,15 +199,4 @@
             document.getElementById('vat').textContent = Math.floor(vat).toLocaleString() + ' 원';
             document.getElementById('netProfit').textContent = Math.floor(netProfit).toLocaleString() + ' 원';
             document.getElementById('marginRate').textContent = Math.floor(marginRate) + '%';
-            document.getElementById('endros').textContent = Math.floor(endros) + '%';
-            document.getElementById('saleFee').textContent = Math.floor(saleFee).toLocaleString() + ' 원';
-            document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
-        }
-
-        // 페이지 로드 시 초기값 표시
-        window.onload = function() {
-            document.getElementById('importCost').textContent = '0 원';
-            document.getElementById('vat').textContent = '0 원';
-            document.getElementById('netProfit').textContent = '0 원';
-            document.getElementById('marginRate').textContent = '0%';
-            document.get
+            document.getElementById('
