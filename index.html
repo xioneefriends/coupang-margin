@@ -24,9 +24,9 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .input-box, .output-box div {
+        .input-box, .output-box {
             width: 100%;
-            padding: 10px;  /* 입력 항목과 출력 항목의 padding을 동일하게 설정 */
+            padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -100,6 +100,11 @@
             right: 10px;
             font-size: 12px;
             color: #aaa;
+        }
+        /* 판매 가격 입력 박스 크기 수정 */
+        .input-box input {
+            padding: 15px; /* 여백을 늘려서 크기를 키움 */
+            font-size: 18px; /* 글씨 크기도 키움 */
         }
     </style>
 </head>
@@ -207,6 +212,4 @@
         // 페이지 로드 시 초기값 표시
         window.onload = function() {
             document.getElementById('importCost').textContent = '0 원';
-            document.getElementById('vat').textContent = '0 원';
-            document.getElementById('netProfit').textContent = '0 원';
-            document.getElementById('marginRate').
+            document.getElementById('vat').textContent
