@@ -18,6 +18,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;  /* 텍스트 위치를 위한 relative 설정 */
         }
         h2 {
             text-align: center;
@@ -91,6 +92,14 @@
         .output-box div span {
             color: black;
         }
+        /* 우측 상단에 작은 글씨로 표시 */
+        .footer-text {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #aaa;
+        }
     </style>
 </head>
 <body>
@@ -146,6 +155,9 @@
 
         <!-- 계산 결과 -->
         <div class="result" id="result"></div>
+
+        <!-- 우측 상단에 텍스트 -->
+        <div class="footer-text">coding by 초가을</div>
     </div>
 
     <script>
@@ -197,10 +209,4 @@
             document.getElementById('vat').textContent = '0 원';
             document.getElementById('netProfit').textContent = '0 원';
             document.getElementById('marginRate').textContent = '0%';
-            document.getElementById('endros').textContent = '0%';
-            document.getElementById('saleFee').textContent = '0 원';
-            document.getElementById('grossFee').textContent = '2,500 원';
-        }
-    </script>
-</body>
-</html>
+            document.getElementById('end
