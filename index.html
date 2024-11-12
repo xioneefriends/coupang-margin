@@ -10,7 +10,7 @@
             padding: 20px;
             background-color: #000000;
             color: #fff;
-            position: relative; /* 오른쪽 상단 텍스트 위치를 위해 추가 */
+            position: relative;
         }
         .container {
             max-width: 600px;
@@ -81,13 +81,11 @@
             padding: 5px;
             border-radius: 4px;
             box-sizing: border-box;
+            color: black;
         }
         .net-profit, .margin-rate {
             color: red !important;
             font-weight: normal;
-        }
-        .output-box div span {
-            color: black;
         }
         /* 오른쪽 상단 텍스트 스타일 */
         .footer-text {
@@ -100,8 +98,7 @@
     </style>
 </head>
 <body>
-    <!-- 오른쪽 상단에 "coding by 초가을" 추가 -->
-    <div class="footer-text">coding by 초가을</div>
+    <div class="footer-text">coding by 임사장</div> <!-- 추가한 부분 -->
 
     <div class="container">
         <h2>쿠팡 마진 계산기</h2>
@@ -122,7 +119,34 @@
         
         <!-- 출력 항목들 -->
         <div class="output-box">
-            <!-- 기존 출력 항목들 -->
+            <div>
+                <label for="importCost">수입 원가:</label>
+                <span id="importCost">0 원</span>
+            </div>
+            <div>
+                <label for="vat">부가세:</label>
+                <span id="vat">0 원</span>
+            </div>
+            <div>
+                <label for="netProfit">순수익:</label>
+                <span id="netProfit" class="net-profit">0 원</span>
+            </div>
+            <div>
+                <label for="marginRate">마진율:</label>
+                <span id="marginRate" class="margin-rate">0%</span>
+            </div>
+            <div>
+                <label for="endros">엔드로아스:</label>
+                <span id="endros">0%</span>
+            </div>
+            <div>
+                <label for="saleFee">판매 수수료:</label>
+                <span id="saleFee">0 원</span>
+            </div>
+            <div>
+                <label for="grossFee">그로스 수수료:</label>
+                <span id="grossFee">2,500 원</span>
+            </div>
         </div>
 
         <!-- 계산 결과 -->
@@ -130,7 +154,41 @@
     </div>
 
     <script>
-        // 기존 JavaScript 함수들
+        function calculateMargin() {
+            const salePrice = parseFloat(document.getElementById('salePrice').value);
+            const chinaCost = parseFloat(document.getElementById('chinaCost').value);
+
+            if (isNaN(salePrice) || isNaN(chinaCost)) {
+                document.getElementById('result').innerHTML = "모든 값을 올바르게 입력해주세요!";
+                return;
+            }
+
+            const grossFee = 2500;
+            const importCost = chinaCost * 300;
+            const saleFee = salePrice * 0.12;
+            const vat = (salePrice / 11) - (importCost / 11);
+            const netProfit = salePrice - importCost - saleFee - grossFee - vat;
+            const marginRate = (netProfit / salePrice) * 100;
+            const endros = (salePrice / netProfit) * 100;
+
+            document.getElementById('importCost').textContent = Math.floor(importCost).toLocaleString() + ' 원';
+            document.getElementById('vat').textContent = Math.floor(vat).toLocaleString() + ' 원';
+            document.getElementById('netProfit').textContent = Math.floor(netProfit).toLocaleString() + ' 원';
+            document.getElementById('marginRate').textContent = Math.floor(marginRate) + '%';
+            document.getElementById('endros').textContent = Math.floor(endros) + '%';
+            document.getElementById('saleFee').textContent = Math.floor(saleFee).toLocaleString() + ' 원';
+            document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
+        }
+
+        window.onload = function() {
+            document.getElementById('importCost').textContent = '0 원';
+            document.getElementById('vat').textContent = '0 원';
+            document.getElementById('netProfit').textContent = '0 원';
+            document.getElementById('marginRate').textContent = '0%';
+            document.getElementById('endros').textContent = '0%';
+            document.getElementById('saleFee').textContent = '0 원';
+            document.getElementById('grossFee').textContent = '2,500 원';
+        }
     </script>
 </body>
 </html>
