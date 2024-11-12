@@ -10,6 +10,15 @@
             padding: 20px;
             background-color: #000000;
             color: #fff;
+            margin: 0;
+        }
+        .top-text {
+            text-align: right;
+            font-size: 0.8em;
+            margin-top: -20px; /* 상단에 가깝게 위치 */
+            padding-top: 10px; /* 적당한 여백 */
+            margin-bottom: 10px; 
+            color: #ccc;
         }
         .container {
             max-width: 600px;
@@ -29,7 +38,6 @@
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box;
             background-color: #444444;
         }
         .input-box {
@@ -88,17 +96,12 @@
         .output-box div span {
             color: black;
         }
-        .top-text {
-            text-align: right;
-            font-size: 0.8em;
-            margin-bottom: -10px;
-        }
     </style>
 </head>
 <body>
+    <div class="top-text">coding by 초가을</div>
+    
     <div class="container">
-        <div class="top-text">coding by 초가을</div>
-        
         <h2>쿠팡 마진 계산기</h2>
         
         <div class="input-box">
@@ -114,7 +117,6 @@
         <button onclick="calculateMargin()">계산 시작</button>
         
         <div class="output-box">
-            <!-- 순수익과 마진율을 가장 위로 이동 -->
             <div>
                 <label for="netProfit">순수익:</label>
                 <span id="netProfit" class="net-profit">0 원</span>
