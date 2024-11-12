@@ -77,11 +77,13 @@
         button:hover {
             background-color: #0056b3;
         }
-        /* 입력박스 크기 키우기 */
-        .input-box input {
+        /* 입력박스 크기 조정: 출력 항목 크기와 동일 */
+        .input-box input, .output-box div span {
             font-size: 18px;
-            padding: 15px;
+            padding: 10px;
             width: 100%;  /* 폭을 100%로 설정 */
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         /* 출력값 박스를 스타일링 */
         .output-box div span {
@@ -208,8 +210,4 @@
             document.getElementById('netProfit').textContent = Math.floor(netProfit).toLocaleString() + ' 원';
             document.getElementById('marginRate').textContent = Math.floor(marginRate) + '%';
             document.getElementById('endros').textContent = Math.floor(endros) + '%';
-            document.getElementById('saleFee').textContent = Math.floor(saleFee).toLocaleString() + ' 원';
-            document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
-        }
-
-        // 페이지 로드 시 초기
+            document.getElementById('saleFee').textContent = Math.floor(saleFee
