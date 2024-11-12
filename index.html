@@ -56,14 +56,21 @@
             text-align: right;  /* 라벨 오른쪽 정렬 */
             padding-right: 10px;
         }
-        .output-box div input {
-            width: 50%;  /* 입력 박스 폭 설정 */
+        .output-box div span {
+            width: 60%;  /* 박스를 길게 만듬 */
+            text-align: left; /* 숫자는 왼쪽 정렬 */
+            background-color: #f0f8ff;
+            padding: 5px;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            white-space: pre-wrap;
+        .net-profit, .margin-rate {
+            color: red !important;
+            font-weight: normal;
+        }
+        /* 출력값 기본 색상: 검정색 */
+        .output-box div span {
+            color: black;
         }
         button {
             padding: 15px 20px;  /* 버튼 크기 키우기 */
@@ -73,40 +80,11 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 50%;  /* 버튼 폭을 50%로 줄임 */
-            margin: 0 auto; /* 버튼을 가운데 정렬 */
-            display: block;
+            width: 100%;
         }
         button:hover {
             background-color: #0056b3;
         }
-        /* 입력박스 크기 조정: 출력 항목 크기와 동일 */
-        .input-box input, .output-box div span {
-            font-size: 18px;
-            padding: 10px;
-            width: 100%;  /* 폭을 100%로 설정 */
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        /* 출력값 박스를 스타일링 */
-        .output-box div span {
-            width: 60%;  /* 박스를 길게 만듬 */
-            text-align: left; /* 숫자는 왼쪽 정렬 */
-            background-color: #f0f8ff;
-            padding: 5px;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        /* 순수익과 마진율 빨간색 스타일 */
-        .net-profit, .margin-rate {
-            color: red !important;
-            font-weight: normal;
-        }
-        /* 출력값 기본 색상: 검정색 */
-        .output-box div span {
-            color: black;
-        }
-        /* 우측 상단에 작은 글씨로 표시 */
         .footer-text {
             position: absolute;
             top: 10px;
@@ -136,7 +114,6 @@
         
         <!-- 출력 항목들 -->
         <div class="output-box">
-            <!-- 순수익과 마진율을 가장 위로 이동 -->
             <div>
                 <label for="netProfit">순수익:</label>
                 <span id="netProfit" class="net-profit">0 원</span>
@@ -212,4 +189,18 @@
             document.getElementById('vat').textContent = Math.floor(vat).toLocaleString() + ' 원';
             document.getElementById('netProfit').textContent = Math.floor(netProfit).toLocaleString() + ' 원';
             document.getElementById('marginRate').textContent = Math.floor(marginRate) + '%';
-            document.getElementBy
+            document.getElementById('endros').textContent = Math.floor(endros) + '%';
+            document.getElementById('saleFee').textContent = Math.floor(saleFee).toLocaleString() + ' 원';
+            document.getElementById('grossFee').textContent = grossFee.toLocaleString() + ' 원';
+        }
+
+        // 페이지 로드 시 초기값 표시
+        window.onload = function() {
+            document.getElementById('importCost').textContent = '0 원';
+            document.getElementById('vat').textContent = '0 원';
+            document.getElementById('netProfit').textContent = '0 원';
+            document.getElementById('marginRate').textContent = '0%';
+        }
+    </script>
+</body>
+</html>
